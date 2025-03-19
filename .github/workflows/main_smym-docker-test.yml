@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://smymregistry.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_8ee4efcbb4e94ac69b9cbf3ff7cbe250 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_cf6a7ffbf2f5416d8b841fdd0101e59d }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_69e72df03422444ebf062560bf26f265 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_d663f7fa5391400ba0549ecbc5dbfe3d }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: smymregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_8ee4efcbb4e94ac69b9cbf3ff7cbe250 }}/docker-test:${{ github.sha }}
+        tags: smymregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_69e72df03422444ebf062560bf26f265 }}/docker-test:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'smym-docker-test'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_edb9c3f60e8f4401a1190e83c2cd53fe }}
-        images: 'smymregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_8ee4efcbb4e94ac69b9cbf3ff7cbe250 }}/docker-test:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a01396e7aefd4f0abc71b6daad6a65a5 }}
+        images: 'smymregistry.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_69e72df03422444ebf062560bf26f265 }}/docker-test:${{ github.sha }}'
